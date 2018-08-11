@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.intraedge.org/student/types" 
+		xmlns:tns="http://www.intraedge.org/student/types" 
+		elementFormDefault="qualified">
+		
+		<complexType name="student">
+			<sequence>
+					<element name="name" type="tns:studentName" maxOccurs="unbounded"/>
+					<element name="address" type="tns:address" maxOccurs="unbounded"/>
+					<element name="phoneNumber" type="tns:phoneNumber" maxOccurs="unbounded"/>
+					<element name="dateOfBirth" type="date"/>
+				</sequence>
+		</complexType>
+		
+		<complexType name="studentName">
+			<sequence>
+				<element name="type" type="tns:StudentType"/>
+				<element name="firstName" type="string"/>
+				<element name="lastName" type="string"/>
+				<element name="middleName" type="string"/>
+			</sequence>
+		</complexType>
+		
+		<complexType name="address">
+			<sequence>
+				<element name="type" type="tns:AddressType"/>
+				<element name="addressLine1" type="string"/>
+				<element name="addressLine2" type="string"/>
+				<element name="city" type="string"/>
+				<element name="state" type="string"/>
+				<element name="postalCode" type="tns:PostalCode"/>
+				<element name="country" type="string"/>
+			</sequence>
+		</complexType>
+		
+		<complexType name="phoneNumber">
+			<sequence>
+				<element name="areaCode" type="tns:AreaCode"/>
+				<element name="phoneNuber" type="int"/>
+				<element name="country" type="string"/>
+				<element name="isPrimary" type="boolean"/>
+			</sequence>
+		</complexType>
+		
+		<simpleType name="AddressType">
+        	<restriction base="string">
+				<enumeration value="PERMANENT" />
+				<enumeration value="TEMPORARY"/>
+				<enumeration value="BILLING"/>
+			</restriction>
+		</simpleType>
+		
+		<simpleType name="StudentType">
+			<restriction base="string">
+				<enumeration value="REGULAR"/>
+				<enumeration value="PARTTIME"/>
+				<enumeration value="DISTANCE"/>
+			</restriction>
+		</simpleType>
+		
+		<simpleType name="PostalCode">
+			<restriction base="string">
+				<pattern value="[A-Z0-9]{6}"/>
+			</restriction>
+		</simpleType>
+		
+		<simpleType name="AreaCode">
+			<restriction base="int">
+				<pattern value="[0-9]{2,4}"/>
+			</restriction>
+		</simpleType>
+		
+</schema>

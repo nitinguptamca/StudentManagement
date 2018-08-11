@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Student" 
+	targetNamespace="http://www.intraedge.org/Student/definitions/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:tns="http://www.intraedge.org/Student/definitions/" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:stud="http://www.intraedge.org/student/messages">
+	
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import namespace="http://www.intraedge.org/student/messages" schemaLocation="student.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="registerStudentRequest">
+    <wsdl:part element="stud:RegisterStudentRequest" name="registerStudentRequest"/>
+  </wsdl:message>
+  <wsdl:message name="registerStudentResponse">
+    <wsdl:part element="stud:RegisterStudentResponse" name="registerStudentResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getStudentNamesRequest">
+    <wsdl:part element="stud:GetStudentNamesRequest" name="getStudentNamesRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getStudentNamesResponse">
+    <wsdl:part element="stud:GetStudentNamesResponse" name="getStudentNamesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getStudentAddressRequest">
+    <wsdl:part element="stud:GetStudentAddressRequest" name="getStudentAddressRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getStudentAddressResponse">
+    <wsdl:part element="stud:GetStudentAddressResponse" name="getStudentAddressResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getStudentPhoneNumbersRequest">
+    <wsdl:part element="stud:GetStudentPhoneNumbersRequest" name="getStudentPhoneNumbersRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getStudentPhoneNumbersResponse">
+    <wsdl:part element="stud:GetStudentPhoneNumbersResponse" name="getStudentPhoneNumbersResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="Student">
+    <wsdl:operation name="registerStudent">
+      <wsdl:input message="tns:registerStudentRequest"/>
+      <wsdl:output message="tns:registerStudentResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getStudentNames">
+      <wsdl:input message="tns:getStudentNamesRequest"/>
+      <wsdl:output message="tns:getStudentNamesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getStudentAddress">
+      <wsdl:input message="tns:getStudentAddressRequest"/>
+      <wsdl:output message="tns:getStudentAddressResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getStudentPhoneNumbers">
+      <wsdl:input message="tns:getStudentPhoneNumbersRequest"/>
+      <wsdl:output message="tns:getStudentPhoneNumbersResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="StudentSOAP" type="tns:Student">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="registerStudent">
+      <soap:operation soapAction="http://www.intraedge.org/Student/registerStudent"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudentNames">
+      <soap:operation soapAction="http://www.intraedge.org/Student/getStudentNames"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudentAddress">
+      <soap:operation soapAction="http://www.intraedge.org/Student/getStudentAddress"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStudentPhoneNumbers">
+      <soap:operation soapAction="http://www.intraedge.org/Student/getStudentPhoneNumbers"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StudentService">
+    <wsdl:port binding="tns:StudentSOAP" name="StudentSOAP">
+      <soap:address location="http://localhost:8081/StudentManagement/studentService/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

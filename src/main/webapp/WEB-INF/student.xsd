@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://www.intraedge.org/student/messages" 
+		xmlns:tns="http://www.intraedge.org/student/messages"
+		xmlns:types="http://www.intraedge.org/student/types" 
+		elementFormDefault="qualified">
+		
+		<import namespace="http://www.intraedge.org/student/types" schemaLocation="types.xsd"/>
+		
+		<element name="RegisterStudentRequest">
+			<complexType>
+				<sequence>
+					<element name="student" type="types:student"/>
+				</sequence>
+			</complexType>
+		</element>
+		
+		<element name="RegisterStudentResponse">
+			<complexType>
+				<sequence>
+					<element name="studentId" type="int"/>
+				</sequence>
+			</complexType>
+		</element>
+		
+		<element name="GetStudentPhoneNumbersRequest">
+			<complexType>
+				<sequence>
+					<element name="studentId" type="int"/>
+				</sequence>
+			</complexType>
+		</element>
+		
+		<element name="GetStudentPhoneNumbersResponse">
+			<complexType>
+				<sequence>
+					<element name="phoneNumber" type="types:phoneNumber" maxOccurs="unbounded"/>
+				</sequence>
+			</complexType>
+		</element>
+		
+		<element name="GetStudentAddressRequest">
+			<complexType>
+				<sequence>
+					<element name="studentId" type="int"/>
+				</sequence>
+			</complexType>
+		</element>
+		
+		<element name="GetStudentAddressResponse">
+			<complexType>
+				<sequence>
+					<element name="address" type="types:address" maxOccurs="unbounded"/>
+				</sequence>
+			</complexType>
+		</element>
+		
+		<element name="GetStudentNamesRequest">
+			<complexType>
+				<sequence>
+					<element name="studentId" type="int"/>
+				</sequence>
+			</complexType>
+		</element>
+		
+		<element name="GetStudentNamesResponse">
+			<complexType>
+				<sequence>
+					<element name="studentNames" type="types:studentName" maxOccurs="unbounded"/>
+				</sequence>
+			</complexType>
+		</element>
+		
+</schema>
